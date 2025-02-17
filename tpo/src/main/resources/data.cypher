@@ -1,25 +1,7 @@
-package com.tpo.tpo.service;
+// Eliminar todos los nodos y relaciones previos (opcional, solo en desarrollo)
+        MATCH (n) DETACH DELETE n;
 
-import org.springframework.data.neo4j.core.Neo4jClient;
-import org.springframework.stereotype.Service;
-
-import jakarta.annotation.PostConstruct;
-
-@Service
-public class DB {
-
-    private final Neo4jClient neo4jClient;
-
-    public DB(Neo4jClient neo4jClient) {
-        this.neo4jClient = neo4jClient;
-    }
-
-    @PostConstruct
-    public void seedDatabase() {
-        neo4jClient.query("MATCH (n) DETACH DELETE n").run(); // Limpiar la base de datos
-
-        String query = """
-        // Crear Películas
+ // Crear Películas
         MERGE (p1:Movie {title: 'Fight Club', writer: 'Chuck Palahniuk', year: 1999, genre: 'drama'})
         MERGE (p2:Movie {title: 'Pulp Fiction', writer: 'Quentin Tarantino', year: 1994})
         MERGE (p3:Movie {title: 'Inglorious Basterds', writer: 'Quentin Tarantino', year: 2009})
@@ -72,13 +54,3 @@ public class DB {
         // Relacionar Actores en películas comunes
         MERGE (a1)-[:ACTED_IN]->(p2)
         MERGE (a2)-[:ACTED_IN]->(p3)
-        """; 
-
-        neo4jClient.query(query).run();
-        System.out.println();
-        System.out.println("----------------------------------------------------------------------------");
-        System.out.println("BASE DE DATOS INICIALIZADA CON PELICULAS, ACTORES Y RELACIONES.");
-        System.out.println("----------------------------------------------------------------------------");
-        System.out.println();
-    }
-}
