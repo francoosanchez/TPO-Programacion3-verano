@@ -16,4 +16,15 @@ public interface MovieRepository extends Neo4jRepository<MovieEntity, String> {
             "RETURN m2.title")
     List<String> findConnectedMovies(String title);
 
+    @Query("MATCH (d:Director)<-[:DIRECTED_BY]-(m:Movie) WHERE d.name = $director AND m.title = $movie RETURN COUNT(m) > 0")
+    boolean isMovieDirectedBy(String movie, String director);
+
+    @Query("MATCH (a:Actor)-[:ACTED_IN]->(m:Movie) WHERE a.name = $actor AND m.title = $movie RETURN COUNT(m) > 0")
+    boolean isMovieActedInBy(String movie, String actor);
+
+    @Query("MATCH (d:Director)-[:DIRECTED]->(m:Movie) WHERE d.name = $director RETURN m.title")
+    List<String> findMoviesByDirector(String director);
+
+    @Query("MATCH (a:Actor)-[:ACTED_IN]->(m:Movie) WHERE a.name = $actor RETURN m.title")
+    List<String> findMoviesByActor(String actor);
 }

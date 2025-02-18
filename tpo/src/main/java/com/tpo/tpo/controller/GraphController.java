@@ -19,4 +19,9 @@ public class GraphController {
     public List<String> getShortestPath(@RequestParam String movie1, @RequestParam String movie2) {
         return graphSearchService.shortestPathWithBranchAndBound(movie1, movie2);
     }
+
+    @GetMapping("/actor-director-relation")
+    public List<String> getActorDirectorRelation(@RequestParam String director, @RequestParam String actor) {
+        return graphSearchService.actorDirectorRelation(director, actor);
+    }
 }
