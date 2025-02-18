@@ -25,6 +25,8 @@ public class GraphSearchService {
         this.movieRepository = movieRepository;
     }
 
+    // RESOLUCIÓN DE RECORRIDO UTILIZANDO RAMIFICACIÓN Y PODA
+
     public List<String> shortestPathWithBranchAndBound(String movieTitle1, String movieTitle2) {
         Map<String, Integer> distance = new HashMap<>();
         Map<String, String> predecessors = new HashMap<>();
@@ -63,6 +65,8 @@ public class GraphSearchService {
         return path;
     }
 
+    // RESOLUCIÓN REALIZANDO RECORRIDO DE GRAFOS DFS
+
     public List<String> depthFirstSearch(String startMovie) {
         Set<String> visited = new HashSet<>();
         List<String> result = new ArrayList<>();
@@ -83,6 +87,7 @@ public class GraphSearchService {
         }
     }
 
+    // // RESOLUCIÓN REALIZANDO RECORRIDO DE GRAFOS BFS
     public List<String> breadthFirstSearch(String startMovie) {
         Set<String> visited = new HashSet<>();
         List<String> result = new ArrayList<>();
