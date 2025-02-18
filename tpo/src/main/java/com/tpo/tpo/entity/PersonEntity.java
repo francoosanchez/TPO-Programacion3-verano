@@ -1,11 +1,8 @@
 package com.tpo.tpo.entity;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
 
 @Node("Person")
 public class PersonEntity {
@@ -13,19 +10,19 @@ public class PersonEntity {
     @Id
     private String name;
 
-    private Integer born;
+    private String birthdate;
+    private String birthplace;
 
-    @Relationship(type = "ACTED_IN")
-    private Set<MovieEntity> movies = new HashSet<>();
-
-    public PersonEntity() {} // ⚠️ Constructor vacío obligatorio
-
-    public PersonEntity(String name, Integer born) {
-        this.name = name;
-        this.born = born;
+    public PersonEntity() {
     }
 
-    // ✅ Getters y Setters
+    public PersonEntity(String name, String birthdate, String birthplace) {
+        this.name = name;
+        this.birthdate = birthdate;
+        this.birthplace = birthplace;
+    }
+
+    // Getters y Setters
     public String getName() {
         return name;
     }
@@ -34,20 +31,19 @@ public class PersonEntity {
         this.name = name;
     }
 
-    public Integer getBorn() {
-        return born;
+    public String getBirthdate() {
+        return birthdate;
     }
 
-    public void setBorn(Integer born) {
-        this.born = born;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
-    public Set<MovieEntity> getMovies() {
-        return movies;
+    public String getBirthplace() {
+        return birthplace;
     }
 
-    public void setMovies(Set<MovieEntity> movies) {
-        this.movies = movies;
+    public void setBirthplace(String birthplace) {
+        this.birthplace = birthplace;
     }
 }
-
