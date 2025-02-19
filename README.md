@@ -24,11 +24,11 @@ Para realizar un recorrido BFS desde una película específica, utiliza el sigui
 curl --location 'http://localhost:8080/graph/bfs?movie=Fight Club'
 ```
 
-### Búsqueda por Backtracking con `curl`
+### Búsqueda por Backtracking
 
 Puedes realizar una búsqueda por backtracking para encontrar todas las que un director y un actor tienen en comun `curl`:
 
 
 ```bash
-curl --location 'http://localhost:8080/graph/actor-director-relation?director=Quentin%20Tarantino&actor=Brad%20Pitt'
+curl --location 'http://localhost:8080/graph/actor-director-relation?director=Quentin Tarantino&actor=Brad Pitt'
 ```
