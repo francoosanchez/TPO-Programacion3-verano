@@ -64,6 +64,29 @@ public class GraphSearchService {
         Collections.reverse(path);
         return path;
     }
+     
+    public List<String> actorDirectorRelation(String director, String actor) {
+        Set<String> visited = new HashSet<>();
+        List<String> result = new ArrayList<>();
+        backtrack(actor, director, visited, result);
+        return result;
+    }
+
+    private void backtrack(String current, String target, Set<String> visited, List<String> result) {
+        visited.add(current);
+        List<String> neighbors = movieRepository.findMoviesByActor(current);
+
+        for (String neighbor : neighbors) {
+            if (!visited.contains(neighbor)) {
+                if (movieRepository.isMovieDirectedBy(neighbor, target) && movieRepository.isMovieActedInBy(neighbor, current)) {
+                    result.add(neighbor);
+                }
+                backtrack(neighbor, target, visited, result);
+            }
+        }
+
+        visited.remove(current);
+    }
 
     // RESOLUCIÓN REALIZANDO RECORRIDO DE GRAFOS DFS
 

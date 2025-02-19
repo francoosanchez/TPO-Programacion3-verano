@@ -6,7 +6,6 @@ Puedes realizar una búsqueda por ramificación y poda para encontrar el camino 
 curl --location 'http://localhost:8080/graph/shortest-path?movie1=Fight Club&movie2=Inglorious Basterds'
 ```
 
-
 ## Realizar Recorridos sobre Grafos DFS y BFS
 
 ###  Recorrido DFS (Depth-First Search)
@@ -23,4 +22,13 @@ Para realizar un recorrido BFS desde una película específica, utiliza el sigui
 
 ```bash
 curl --location 'http://localhost:8080/graph/bfs?movie=Fight Club'
+```
+
+### Búsqueda por Backtracking con `curl`
+
+Puedes realizar una búsqueda por backtracking para encontrar todas las que un director y un actor tienen en comun `curl`:
+
+
+```bash
+curl --location 'http://localhost:8080/graph/actor-director-relation?director=Quentin%20Tarantino&actor=Brad%20Pitt'
 ```

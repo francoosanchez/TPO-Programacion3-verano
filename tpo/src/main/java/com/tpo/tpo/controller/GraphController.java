@@ -30,4 +30,9 @@ public class GraphController {
     public List<String> bfs(@RequestParam String movie) {
         return graphSearchService.breadthFirstSearch(movie);
     }
+  
+    @GetMapping("/actor-director-relation")
+    public List<String> getActorDirectorRelation(@RequestParam String director, @RequestParam String actor) {
+        return graphSearchService.actorDirectorRelation(director, actor);
+    }
 }
