@@ -19,7 +19,7 @@ public class DB {
         neo4jClient.query("MATCH (n) DETACH DELETE n").run(); // Limpiar la base de datos
 
         String query = """
-                // Crear Películas
+// Crear Películas
 MERGE (p1:Movie {title: 'Fight Club', writer: 'Chuck Palahniuk', year: 1999, genre: 'drama'})
 MERGE (p2:Movie {title: 'Pulp Fiction', writer: 'Quentin Tarantino', year: 1994})
 MERGE (p3:Movie {title: 'Inglorious Basterds', writer: 'Quentin Tarantino', year: 2009})
@@ -91,7 +91,8 @@ MERGE (a4)-[:ACTED_IN]->(p6)
 MERGE (p4)-[:DIRECTED_BY]->(d4)
 MERGE (p5)-[:DIRECTED_BY]->(d4)
 MERGE (p6)-[:DIRECTED_BY]->(d4)
-        """;;
+
+""";
 
         neo4jClient.query(query).run();
         System.out.println();
