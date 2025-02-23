@@ -3,7 +3,7 @@
 Puedes realizar una búsqueda por ramificación y poda para encontrar el camino más corto entre dos películas utilizando el siguiente comando `curl`:
 
 ```bash
-curl --location 'http://localhost:8080/graph/shortest-path?movie1=Fight Club&movie2=Inglorious Basterds'
+curl --location 'http://localhost:8080/graph/shortest-path?movie1=Fight Club&movie2=The Hobbit: The Battle of the Five Armies'
 ```
 
 ## Realizar Recorridos sobre Grafos DFS y BFS
